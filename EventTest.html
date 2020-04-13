@@ -8,10 +8,13 @@
 </head>
 
 <body>
-<form action="post">
-  <input type="color" name="colors">
-  <input type="file" name="file">
-</form>
+  
+<!-- <form action="post"> -->
+  <input type="color" name="colors"></input>
+  <input type="file" name="file"></input>
+  <input type="text" id="nameinput"></input>
+<!-- </form> -->
+<p>hello <span id="namefield">Guest</span>s
   <div id="mouseOverMe">Put the mouse here
   <div class="restore">this will the normal</div>
    <div class="hightlight">this will the highlighted</div>
@@ -35,7 +38,20 @@
   }
 var mouseOverMeDiv= document.getElementById("mouseOverMe") ;
 mouseOverMeDiv.addEventListener('mouseover',makeBold) ;
-mouseOverMeDiv.addEventListener('mouseout',restore) ;  
+mouseOverMeDiv.addEventListener('mouseout',restore) ; 
+
+
+function namehandle(e){
+      if(e.keyCode==13){
+       var nameInput= document.getElementById("nameinput") ;
+       var nameField= document.getElementById("namefield") ;
+        nameField.innerHTML=nameInput.value;
+        nameField.style.backgroundColor='cyan';
+        nameField.style.textTransform="capitalize";
+      }
+      
+    }
+    document.addEventListener("keyup",namehandle) ;
 </script>
 </body>
 </html>
