@@ -7,7 +7,21 @@
 </head>
 <body>
     <button id="clickMe">Click Me!</button>
-    <p>you've clicked the button <span id="numClicks">0 times</span>
+ 
+    <p>you've clicked the button <span id="numClicks">0 times</span></p>
+        <input id='itemField'></input>
+        <ul>
+            <span id="list"></span>
+        </ul>
+
+        <p>
+            <ul>
+                <li>dog</li>
+                <li>cat</li>
+                <li>elephant</li>
+                <li>bear</li>
+            </ul>
+        </p>
     <script>
         var clicks=0;
         function clickHandler(){
@@ -23,6 +37,17 @@
         // var button=$('#clickMe')
         // button.click(clickHandler);
 $('#clickMe').click(clickHandler);
+function keyPressHandler(e){
+  if(e.keyCode==13){
+      $('#list').append('<li>' +$('#itemField').val()+'<li>');
+      $('#itemField').val('');
+  }
+}
+$('#itemField').keyup(keyPressHandler);
+
+$('li').click(function(){
+    $(this).css('font-weight','bold');
+});
     </script>
 </body>
 </html>
