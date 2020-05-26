@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ReactIs Example</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    </head>
+    <body>
+        <div id ='container'></div>
+        <script type='text/jsx'>
+            
+            class Counter extends React.Component{
+                constructor(props){
+                    super(props);
+                   this.state = { count:0};
+            }
+            increamentCount(){
+                this.setState({
+                    count: this.state.count + 1
+                });
+            }
+            render(){
+                return (
+                    <div>
+                        Count: {this.state.count}
+                        <button type="button"
+                         onClick={this.increamentCount.bind(this)}>
+                         increament
+                    </button>
+                    </div>
+                );
+            }
+        };
+        class LikeButton extends React.Component{
+            constructor(props){
+                super(props);
+               this.state = { liked:false};
+        }
+        toggle(){
+            this.setState({
+                liked: !this.state.liked 
+            });
+        }
+        render(){
+             var name =this.props.name;
+             var txt =this.state.liked?'Unlike':'Like';
+             var clr =this.state.liked?'red':'black';
+             var weight =this.state.liked?'bold':'normal';
+            return (
+             <p><span style={{color:clr,fontWeight:weight}}>
+                 {name}</span>
+                 <span onClick={this.toggle.bind(this)}>
+                     {'\ud83d\udc4d'+txt}
+                 </span></p>
+            );
+        }
+    };
+            ReactDOM.render(
+                <div>
+                    <LikeButton name="java" />
+                    <LikeButton name="javaScript" />
+                </div>,
+                document.getElementById('container')
+            );
+
+        </script>
+    </body>
+</html>
